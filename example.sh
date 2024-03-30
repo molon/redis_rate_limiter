@@ -34,7 +34,7 @@ if [ "$action" == "reserve" ]; then
     echo 'now:' $now "timeout:" $timeout
     deadline=$((now + timeout)) # 计算预期最大截止时间
 
-    # 调用 Redis 执行 reserve.lua 脚本，获取行动触发时间点
+    # 调用 redis 执行 reserve.lua 脚本，获取行动触发时间点
     timeToAct=$(redis-cli --eval reserve.lua $key , $durationPerToken $burst $tokens $now $deadline)
     echo "timeToAct: $timeToAct"
 
