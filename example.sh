@@ -6,8 +6,8 @@ if [ "$#" -ne 1 ]; then
     echo "action: reserve or cancel"
     exit 1
 fi
-
 action=$1
+
 key="rlimiter:testKey" # 令牌桶名称
 durationPerToken=1000000 # 令牌生成间隔（微秒），此例为1秒
 burst=3 # 令牌桶最大容量
@@ -47,7 +47,7 @@ if [ "$action" == "reserve" ]; then
     fi
 elif [ "$action" == "cancel" ]; then
     # 取消逻辑：使用 DECRBY 减少 baseTime
-    # 但请注意，通常是 reserve 操作获取到的 timeToAct 还未触达的时间才可以按需取消，需调用方自行判断
+    # 但请注意，通常是 reserve 操作获取到的 timeToAct 还未触达之前才有权按需取消，需调用方自行判断
     decrement=$((tokens * durationPerToken))
     echo "Cancelling $tokens tokens, decrementing by $decrement microseconds"
     newBaseTime=$(redis-cli DECRBY $key $decrement)
