@@ -2,8 +2,8 @@ local key = KEYS[1]
 local durationPerToken = tonumber(ARGV[1]) -- 每个令牌所需的时间间隔，单位微秒
 local burst = tonumber(ARGV[2]) -- 突发容量
 local tokens = tonumber(ARGV[3]) -- 请求的令牌数量
-local now = tonumber(ARGV[4]) -- 当前时间，单位微妙
-local deadline = tonumber(ARGV[5]) -- 操作的截止时间，单位微秒
+local now = tonumber(ARGV[4]) -- 当前时间点，单位微妙
+local deadline = tonumber(ARGV[5]) -- 最大等待时间点，单位微秒
 
 -- 计算基于当前时间和 burst 时长的重置值
 local resetValue = now - (burst * durationPerToken)
