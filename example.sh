@@ -17,9 +17,6 @@ tokens=1 # 请求预留的令牌数量
 # 若调用方不希望等待，此值设置为0即可
 timeout=2000000 
 
-password="Rds1027" # 替换为你的 Redis 密码
-redis_cli="redis-cli -a $password"
-
 # 如果是 macOS, 需要安装 coreutils 来使用 `gdate` 获取微秒级时间戳
 if ! command -v gdate &> /dev/null; then
     echo "Attempting to install coreutils for gdate command..."
@@ -38,7 +35,7 @@ if [ "$action" == "reserve" ]; then
     deadline=$((now + timeout)) # 计算预期最大截止时间
 
     # 调用 Redis 执行 reserve.lua 脚本，获取行动触发时间点
-    timeToAct=$($redis_cli --eval reserve.lua $key , $durationPerToken $burst $tokens $now $deadline)
+    timeToAct=$(redis-cli --eval reserve.lua $key , $durationPerToken $burst $tokens $now $deadline)
     echo "timeToAct: $timeToAct"
 
     if [[ $timeToAct -lt 0 ]]; then
@@ -53,7 +50,7 @@ elif [ "$action" == "cancel" ]; then
     # 但请注意，通常是 reserve 操作获取到的 timeToAct 还未触达的时间才可以按需取消，需调用方自行判断
     decrement=$((tokens * durationPerToken))
     echo "Cancelling $tokens tokens, decrementing by $decrement microseconds"
-    newBaseTime=$($redis_cli DECRBY $key $decrement)
+    newBaseTime=$(redis-cli DECRBY $key $decrement)
     echo "New base time: $newBaseTime"
 else
     echo "Invalid action: $action"
