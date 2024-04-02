@@ -5,10 +5,14 @@
 - **调用方可控**：调用发可知需等待时长，可决定最大等待时长、甚至可取消令牌。
 
 ```bash
+# reserve.lua 用法
 # redis-cli --eval reserve.lua <key> , <durationPerToken> <burst> <tokens> <now> <deadline>
 
+# 运行 redis-server
+redis-server
+
 # 频繁执行即可模拟预留令牌的操作
-bash ./example.sh reserve
+bash ./run_example.sh
 
 # 模拟取消预留
 bash ./example.sh cancel

@@ -36,14 +36,20 @@ if [ "$action" == "reserve" ]; then
 
     # 调用 redis 执行 reserve.lua 脚本，获取行动触发时间点
     timeToAct=$(redis-cli --eval reserve.lua $key , $durationPerToken $burst $tokens $now $deadline)
-    echo "timeToAct: $timeToAct"
+    # echo "timeToAct: $timeToAct"
 
     if [[ $timeToAct -lt 0 ]]; then
         # 超过预设的最大等待时间，放弃预留并返回错误
-        echo "err: timeout" 
+       echo "err: You cannot obtain permission to execute the business logic within $timeout microseconds. Please give up on execution and return an error indicating the business system is busy."
     else
         # 如果 timeToAct 大于当前时间，应计算并等待需要的延迟；否则无需等待
-        echo "delayFromNow: $((timeToAct - now))" 
+        utilTimeToAct=$((timeToAct - now))
+        echo "utilTimeToAct: $utilTimeToAct" 
+        if [[ $utilTimeToAct -gt 0 ]]; then
+            echo "You should wait $utilTimeToAct microseconds before executing the business logic."
+        else
+            echo "You can execute the business logic immediately."
+        fi
     fi
 elif [ "$action" == "cancel" ]; then
     # 取消逻辑：使用 DECRBY 减少 baseTime
