@@ -17,7 +17,8 @@ tokens=1 # 请求预留的令牌数量
 # 若调用方不希望等待，此值设置为0即可
 timeout=2200000 
 
-# 如果是 macOS, 需要安装 coreutils 来使用 `gdate` 获取微秒级时间戳
+# 需要安装 coreutils 来使用 `gdate` 获取微秒级时间戳
+# 这块只是 macOS 的实现，其他系统请自行修改，此脚本只是例子。
 if ! command -v gdate &> /dev/null; then
     echo "Attempting to install coreutils for gdate command..."
     brew install coreutils &> /dev/null
@@ -53,7 +54,7 @@ if [ "$action" == "reserve" ]; then
     fi
 elif [ "$action" == "cancel" ]; then
     # 取消逻辑：使用 DECRBY 减少 baseTime
-    # 但请注意，通常是 reserve 操作获取到的 timeToAct 还未触达之前才有权按需取消，需调用方自行判断
+    # 但请注意，通常是 reserve 操作获取到的 timeToAct 还未触达之前 并且 业务逻辑热点还未真的执行之前 才有权按需取消，需调用方自行判断。
     decrement=$((tokens * durationPerToken))
     echo "Cancelling $tokens tokens, decrementing by $decrement microseconds"
     newBaseTime=$(redis-cli DECRBY $key $decrement)
