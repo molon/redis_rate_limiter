@@ -11,7 +11,7 @@
 # 运行 redis-server
 redis-server
 
-# 频繁执行即可模拟预留令牌的操作
+# 内部会频繁执行 example.sh reserve 以模拟预留令牌的操作
 bash ./run_example.sh
 
 # 模拟取消预留
