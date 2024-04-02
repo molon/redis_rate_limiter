@@ -23,114 +23,123 @@ bash ./example.sh cancel
 # 案例
 `bash ./run_example.sh` 执行日志:
 ```
-now: 1712053158723546 timeout: 2000000
+now: 1712053339218374 timeout: 2000000
 utilTimeToAct: -2000000
 You can execute the business logic immediately.
 
 ---------
 
-now: 1712053159053695 timeout: 2000000
-utilTimeToAct: -1330149
+now: 1712053339553444 timeout: 2000000
+utilTimeToAct: -1335070
 You can execute the business logic immediately.
 
 ---------
 
-now: 1712053159384911 timeout: 2000000
-utilTimeToAct: -661365
+now: 1712053339882651 timeout: 2000000
+utilTimeToAct: -664277
 You can execute the business logic immediately.
 
 ---------
 
-now: 1712053159709588 timeout: 2000000
-utilTimeToAct: 13958
-You should wait 13958 microseconds before executing the business logic.
+now: 1712053340213767 timeout: 2000000
+utilTimeToAct: 4607
+You should wait 4607 microseconds before executing the business logic.
 
 ---------
 
-now: 1712053160040008 timeout: 2000000
-utilTimeToAct: 683538
-You should wait 683538 microseconds before executing the business logic.
+now: 1712053340544279 timeout: 2000000
+utilTimeToAct: 674095
+You should wait 674095 microseconds before executing the business logic.
 
 ---------
 
-now: 1712053160366991 timeout: 2000000
-utilTimeToAct: 1356555
-You should wait 1356555 microseconds before executing the business logic.
+now: 1712053340877906 timeout: 2000000
+utilTimeToAct: 1340468
+You should wait 1340468 microseconds before executing the business logic.
 
 ---------
 
-now: 1712053160697141 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053341212147 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053161025215 timeout: 2000000
-utilTimeToAct: 1698331
-You should wait 1698331 microseconds before executing the business logic.
+now: 1712053341547496 timeout: 2000000
+utilTimeToAct: 1670878
+You should wait 1670878 microseconds before executing the business logic.
 
 ---------
 
-now: 1712053161357385 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053341877344 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053161683467 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053342200889 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053162011716 timeout: 2000000
-utilTimeToAct: 1711830
-You should wait 1711830 microseconds before executing the business logic.
+now: 1712053342533185 timeout: 2000000
+utilTimeToAct: 1685189
+You should wait 1685189 microseconds before executing the business logic.
 
 ---------
 
-now: 1712053162338879 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053342868121 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053162663490 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053343203083 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053162986853 timeout: 2000000
-utilTimeToAct: 1736693
-You should wait 1736693 microseconds before executing the business logic.
+now: 1712053343538132 timeout: 2000000
+utilTimeToAct: 1680242
+You should wait 1680242 microseconds before executing the business logic.
 
 ---------
 
-now: 1712053163309248 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053343874109 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053163642396 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053344210357 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053163972071 timeout: 2000000
-utilTimeToAct: 1751475
-You should wait 1751475 microseconds before executing the business logic.
+now: 1712053344547737 timeout: 2000000
+utilTimeToAct: 1670637
+You should wait 1670637 microseconds before executing the business logic.
 
 ---------
 
-now: 1712053164303218 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053344881971 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053164631533 timeout: 2000000
-err: You cannot obtain permission to execute the business logic within 2000000 microseconds. Please give up on execution and return an error indicating the business system is busy.
+now: 1712053345210946 timeout: 2000000
+err: You cannot obtain permission to execute the business logic within 2000000 microseconds. 
+Please give up on execution and return an error indicating the business system is busy.
 
 ---------
 
-now: 1712053164954862 timeout: 2000000
-utilTimeToAct: 1768684
-You should wait 1768684 microseconds before executing the business logic.
+now: 1712053345542334 timeout: 2000000
+utilTimeToAct: 1676040
+You should wait 1676040 microseconds before executing the business logic.
 
 ---------
 

@@ -40,7 +40,8 @@ if [ "$action" == "reserve" ]; then
 
     if [[ $timeToAct -lt 0 ]]; then
         # 超过预设的最大等待时间，放弃预留并返回错误
-       echo "err: You cannot obtain permission to execute the business logic within $timeout microseconds. Please give up on execution and return an error indicating the business system is busy."
+       echo "err: You cannot obtain permission to execute the business logic within $timeout microseconds. "
+       echo "Please give up on execution and return an error indicating the business system is busy."
     else
         # 如果 timeToAct 大于当前时间，应计算并等待需要的延迟；否则无需等待
         utilTimeToAct=$((timeToAct - now))
