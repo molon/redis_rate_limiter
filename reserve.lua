@@ -3,7 +3,7 @@ local durationPerToken = tonumber(ARGV[1]) -- 每个令牌所需的时间间隔�
 local burst = tonumber(ARGV[2]) -- 突发容量
 local tokens = tonumber(ARGV[3]) -- 请求的令牌数量
 local now = tonumber(ARGV[4]) -- 当前时间点，单位微妙
-local deadline = tonumber(ARGV[5]) -- 最大等待时间点，单位微秒
+local timeout = tonumber(ARGV[5]) -- 最大预留超时，单位微秒
 
 -- 计算基于当前时间和 burst 时长的重置值
 local resetValue = now - (burst * durationPerToken)
@@ -20,8 +20,8 @@ end
 local tokensDuration = tokens * durationPerToken
 local timeToAct = baseTime + tokensDuration
 
--- 如果计算的 timeToAct 超过了 deadline，则不更新 baseTime，直接返回错误
-if timeToAct > deadline then
+-- 如果 timeToAct 会超过最大预留超时，则不更新 baseTime，直接返回错误
+if timeToAct > now + timeout then
     return -1 -- 返回一个错误标识，例如 -1
 else
     -- 更新 baseTime 为下一个请求的执行时间
