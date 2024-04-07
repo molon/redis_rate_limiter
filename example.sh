@@ -38,10 +38,12 @@ if [ "$action" == "reserve" ]; then
     timeToAct=$(redis-cli --eval reserve.lua $key , $durationPerToken $burst $tokens $now $timeout)
     # echo "timeToAct: $timeToAct"
 
-    if [[ $timeToAct -lt 0 ]]; then
+    if [[ $timeToAct -eq -1 ]]; then
         # 超过最大预留超时，放弃预留并返回错误
        echo "err: You cannot obtain permission to execute the business logic within $timeout microseconds. "
        echo "Please give up on execution and return an error indicating the business system is busy."
+    elif [[ $timeToAct -eq -2 ]]; then
+       echo "err: invalid params"
     else
         # 如果 timeToAct 大于当前时间，应计算并等待需要的延迟；否则无需等待
         utilTimeToAct=$((timeToAct - now))

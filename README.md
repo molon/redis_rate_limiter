@@ -15,6 +15,7 @@ redis-server
 bash ./run_example.sh
 
 # 模拟取消预留
+# 通常不建议用，因为当前 reservation 的取消，不会触发其之后 reservations 的 timeToAct 响应式改动。最终就可能导致极端情况下同一时间实际超过了 burst 数量的执行发生。
 bash ./example.sh cancel
 ```
 

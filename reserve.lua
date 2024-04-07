@@ -5,6 +5,10 @@ local tokens = tonumber(ARGV[3]) -- 请求的令牌数量
 local now = tonumber(ARGV[4]) -- 当前时间点，单位微妙
 local timeout = tonumber(ARGV[5]) -- 最大预留超时，单位微秒
 
+if now <=0 or durationPerToken <= 0 or burst <= 0 or tokens <= 0 or tokens > burst then
+    return -2 -- 表示参数错误
+end
+
 -- 计算基于当前时间和 burst 时长的重置值
 local resetValue = now - (burst * durationPerToken)
 
@@ -22,7 +26,7 @@ local timeToAct = baseTime + tokensDuration
 
 -- 如果 timeToAct 会超过最大预留超时，则不更新 baseTime，直接返回错误
 if timeToAct > now + timeout then
-    return -1 -- 返回一个错误标识，例如 -1
+    return -1 -- 错误标识
 else
     -- 更新 baseTime 为下一个请求的执行时间
     redis.call("set", key, timeToAct)
